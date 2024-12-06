@@ -1,4 +1,5 @@
-readme stuff
+initial code generation by google gemini and micorosoft copilot
+
 
 # prerequisites
 1. ffmpeg
@@ -37,4 +38,6 @@ pip install -r requirements.txt
 [pytorch- Getting Started Locally](https://pytorch.org/get-started/locally/#supported-windows-distributions)
 
 # resources
+- google gemini
+- micorosoft copilot
 - [openai whisper repo](https://github.com/openai/whisper)
