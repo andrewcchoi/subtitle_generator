@@ -5,7 +5,7 @@ import moviepy as mp
 
 # %%
 
-def generate_subtitles(video_path, audio_path, output_srt_path):
+def generate_subtitles(video_path, audio_path, output_srt_path, language="en"):
     """Generates subtitles for a video using Whisper."""
 
     # Load the Whisper model
@@ -16,7 +16,7 @@ def generate_subtitles(video_path, audio_path, output_srt_path):
     video.audio.write_audiofile(audio_path)
 
     # Transcribe the audio
-    result = model.transcribe(audio_path, verbose=False, condition_on_previous_text=False)
+    result = model.transcribe(audio_path, verbose=False, condition_on_previous_text=False, language=language)
 
     # Generate SRT file
     with open(output_srt_path, "w", encoding="utf-8") as f:
@@ -40,7 +40,7 @@ def format_time(seconds):
 # %%timeit
 if __name__ == "__main__":
     audio_path = "videos/temp_audio_gemini.wav"
-    file_name = "sample_1"
+    file_name = "file_name"
     video_path = f"videos/{file_name}.mkv"
     output_srt_path = f"videos/{file_name}_gemini.srt"
-    generate_subtitles(video_path, audio_path, output_srt_path)
+    generate_subtitles(video_path, audio_path, output_srt_path, language="en")
