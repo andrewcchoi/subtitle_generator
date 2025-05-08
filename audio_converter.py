@@ -1,8 +1,6 @@
-# %%
+
 import ffmpeg
 
-
-# %%
 
 def convert_audio(file_name: str, input_ext: str, output_ext: str, audio_bitrate: str) -> None:
     """
