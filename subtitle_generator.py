@@ -1,12 +1,22 @@
 # %%
+from re import DEBUG
+from venv import logger
 import whisper
 import moviepy as mp
+
+import logging
+
+logging.addLevelName(__name__, DEBUG)
 
 
 # %%
 
-def generate_subtitles(video_path, audio_path, output_srt_path, language="en"):
+def generate_subtitles(file_name, language="en"):
     """Generates subtitles for a video using Whisper."""
+
+    video_path = f"video/{file_name}.mkv"
+    audio_path = f"audio/{file_name}.wav"
+    output_srt_path = f"{file_name}.srt"
 
     # Load the Whisper model
     model = whisper.load_model("turbo", device="cuda")  # Or another model like "small", "medium", "large", "turbo"
@@ -39,8 +49,6 @@ def format_time(seconds):
 # %%
 # %%timeit
 if __name__ == "__main__":
-    audio_path = "videos/temp_audio_gemini.wav"
-    file_name = "file_name"
-    video_path = f"videos/{file_name}.mkv"
-    output_srt_path = f"videos/{file_name}_gemini.srt"
-    generate_subtitles(video_path, audio_path, output_srt_path, language="en")
+    # vibing with gemini
+    file_name = "Sherlock.and.Daughter.S01E03.720p.HEVC.x265-MeGusta"
+    generate_subtitles(file_name, language="en")
