@@ -54,6 +54,6 @@ if __name__ == "__main__":
     checkpoint = torch.load(fp, map_location=device)
     """
     # vibing with gemini
-    file_name = "Zootopia.2"
+    file_name = "video_file"
     video_ext = "mkv"
     generate_subtitles(file_name, video_ext, language="en")
