@@ -11,10 +11,10 @@ logging.addLevelName(__name__, DEBUG)
 
 # %%
 
-def generate_subtitles(file_name, language="en"):
+def generate_subtitles(file_name, video_ext="mkv", language="en"):
     """Generates subtitles for a video using Whisper."""
 
-    video_path = f"video/{file_name}.mkv"
+    video_path = f"videos/{file_name}.{video_ext}"
     audio_path = f"audio/{file_name}.wav"
     output_srt_path = f"{file_name}.srt"
 
@@ -49,6 +49,11 @@ def format_time(seconds):
 # %%
 # %%timeit
 if __name__ == "__main__":
+    """
+    \lib\site-packages\whisper\__init__.py:150: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+    checkpoint = torch.load(fp, map_location=device)
+    """
     # vibing with gemini
-    file_name = "Sherlock.and.Daughter.S01E03.720p.HEVC.x265-MeGusta"
-    generate_subtitles(file_name, language="en")
+    file_name = "Zootopia.2"
+    video_ext = "mkv"
+    generate_subtitles(file_name, video_ext, language="en")
