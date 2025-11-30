@@ -2,7 +2,7 @@
 import ffmpeg
 
 
-def convert_audio(file_name: str, input_ext: str, output_ext: str, audio_bitrate: str) -> None:
+def convert_audio(file_name: str, input_ext: str, output_ext: str, audio_bitrate: str='320k') -> None:
     """
     Converts an audio file from one format to another.
     
@@ -31,7 +31,7 @@ def convert_audio(file_name: str, input_ext: str, output_ext: str, audio_bitrate
     (
         ffmpeg
         .input(input_file)
-        .output(output_file, audio_bitrate='320k')
+        .output(output_file, audio_bitrate=audio_bitrate)
         .run()
     )   
 
@@ -41,7 +41,7 @@ def convert_audio(file_name: str, input_ext: str, output_ext: str, audio_bitrate
 # %%
 if __name__ == "__main__":
     # Load the audio file
-    file_name = "file_name"
+    file_name = "sample_audio"
     input_ext = "m4b"  # Replace with input extension
     output_ext = "mp3"  # Replace with desired output extension
 
